@@ -12,14 +12,14 @@ pipeline {
             }
         }
 		stage('Deploy') {
-			echo "running program"
             steps {
+            	sh 'echo "running program"'
                 retry(3) {
-                    java -cp java-maven-junit-helloworld-1.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
+                    sh 'java -cp java-maven-junit-helloworld-1.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp'
                 }
 
                 timeout(time: 3, unit: 'MINUTES') {
-                    java -cp java-maven-junit-helloworld-1.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
+                    sh 'java -cp java-maven-junit-helloworld-1.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp'
                 }
             }
         }
@@ -36,3 +36,4 @@ pipeline {
         }
     }
 }
+
