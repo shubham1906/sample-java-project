@@ -12,7 +12,7 @@ pipeline {
             }
         }
 		stage('Deploy') {
-			sh 'echo "running program"'
+			echo "running program"
             steps {
                 retry(3) {
                     java -cp java-maven-junit-helloworld-1.0-SNAPSHOT.jar com.example.javamavenjunithelloworld.HelloApp
